@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to top left, $primary, $primary 75%, $secondary);
+}
+
+main {
+  background-color: #FFF;
+  border: 2px solid $secondary;
+  border-radius: 1rem;
+  padding: 2rem;
+  color: $secondary;
+}

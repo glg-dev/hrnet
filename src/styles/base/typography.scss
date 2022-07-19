@@ -9,6 +9,7 @@ a {
   text-decoration: none;
   &.to-employees:hover {
     text-decoration: underline;
+    color: $secondary;
   }
 }
 
@@ -24,11 +25,12 @@ header {
   }
 }
 
+
 .create-employee button {
   font-size: 1rem;
   font-weight: 600;
   color: #FFF;
   &:hover {
-    text-decoration: underline;
+    color: $primary;
   }
 }

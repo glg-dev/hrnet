@@ -1,8 +1,20 @@
 header {
-  background-color: transparent;
-  padding: 2rem;
-  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100vw;
+  h1 {
+    margin: 2rem;
+  }
+  .logo {
+    height: 104px;
+    border-radius: 0 0 0 2rem;
+    overflow: hidden;
+    box-shadow: -16px 0 150px 4px #FFF;
+    img {
+      object-fit: cover;
+      width: auto;
+      height: 100%;
+    }
+  }
 }

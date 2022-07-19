@@ -4,14 +4,20 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 
-const Calendar = () => {
+const Calendar = ({ setInputDate }) => {
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [displayedDate, setDisplayedDate] = useState(new Date())
+
+  function handleChange(e) {
+    setDisplayedDate(e)
+    setInputDate(e.toLocaleDateString("fr-FR"))
+  }
 
   return (
     <DatePicker 
-      selected={startDate} 
-      onChange={(date) => setStartDate(date)} 
+      // selected={typeof startDate == "string" ? new Date(startDate) : new Date()} 
+      selected={displayedDate}
+      onChange={(e) => handleChange(e)} 
       dateFormat= "dd/MM/yyyy"
       closeOnScroll={true}
       showWeekNumbers

@@ -7,21 +7,24 @@ import DropdownMenu from './DropdownMenu';
 
 const CreateForm = () => {
 
+  const date = new Date();
+
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
-  const [birthDate, setBirthDate] = useState('')
-  const [startDate, setStartDate] = useState('')
+  const [birthDate, setBirthDate] = useState(date.toLocaleDateString("fr-FR"))
+  const [startDate, setStartDate] = useState(date.toLocaleDateString("fr-FR"))
   const [street, setStreet] = useState('')
   const [city, setCity] = useState('')
-  const [selectedState, setSelectedState] = useState('')
+  const [selectedState, setSelectedState] = useState(statesList[0].value)
   const [zipCode, setZipCode] = useState('')
-  const [selectedDepartment, setSelectedDepartment] = useState('')
+  const [selectedDepartment, setSelectedDepartment] = useState(departmentsList[0].value)
 
   function submitForm(e) {
     e.preventDefault()
     console.log(firstname, lastname, birthDate, startDate, street, city, selectedState, zipCode, selectedDepartment);
   }
-  
+
+
   return (
     <form onSubmit={submitForm}>
       <section className='firstname'>
@@ -46,12 +49,12 @@ const CreateForm = () => {
 
       <section className="birth">
         <label htmlFor="birth">Date of Birth</label>
-        <Calendar />
+        <Calendar setInputDate={setBirthDate} />
       </section>
 
       <section className="start">
         <label htmlFor="start">Start Date</label>
-        <Calendar />
+        <Calendar setInputDate={setStartDate}/>
       </section>
 
       <fieldset>
@@ -76,7 +79,11 @@ const CreateForm = () => {
         </section>
         <section className="state">
           <label htmlFor="state">State</label>
-          <DropdownMenu options={statesList} selected={statesList[0]}/>
+          <DropdownMenu 
+            options={statesList} 
+            selected={statesList[0]}
+            setInput={setSelectedState}
+          />
         </section>
         <section className="zip-code">
           <label htmlFor="zip-code">Zip Code</label>
@@ -91,7 +98,11 @@ const CreateForm = () => {
 
       <section className='department'>
         <label htmlFor="deparment">Department</label>
-        <DropdownMenu options={departmentsList} selected={departmentsList[0]} />
+        <DropdownMenu 
+          options={departmentsList} 
+          selected={departmentsList[0]} 
+          setInput={setSelectedDepartment}
+        />
       </section>
 
       <button type="submit">Save</button>

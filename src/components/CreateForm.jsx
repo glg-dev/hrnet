@@ -105,7 +105,7 @@ const CreateForm = () => {
         />
       </section>
 
-      <button type="submit">Save</button>
+      <button type="submit" className='save-button'>Save</button>
     </form>
   );
 };

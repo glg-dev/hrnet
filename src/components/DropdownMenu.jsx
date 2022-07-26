@@ -14,7 +14,6 @@ const DropdownMenu = ({ options, selected, setInput }) => {
     cursor: 'pointer'
   }),
     control: (provided, state) => {
-      console.log(state);
       return ({
         ...provided,
         "&:hover" : {

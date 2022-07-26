@@ -10,17 +10,19 @@ const Calendar = ({ setInputDate }) => {
 
   function handleChange(e) {
     setDisplayedDate(e)
-    setInputDate(e.toLocaleDateString("fr-FR"))
+    setInputDate(e?.toLocaleDateString("fr-FR"))
+    console.log(e);
   }
 
   return (
     <DatePicker 
-      // selected={typeof startDate == "string" ? new Date(startDate) : new Date()} 
-      selected={displayedDate}
+      selected={displayedDate && displayedDate}
       onChange={(e) => handleChange(e)} 
       dateFormat= "dd/MM/yyyy"
       closeOnScroll={true}
       showWeekNumbers
+      isClearable
+      clearButtonClassName="clear-button"
     />
   );
 };

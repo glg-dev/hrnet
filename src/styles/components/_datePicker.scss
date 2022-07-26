@@ -1,0 +1,23 @@
+.clear-button {
+  background-color: transparent;
+  &:hover {
+    background-color: $secondary;
+    &::after {
+      background-color: #FFF;
+      color: $secondary;
+    }
+  }
+  &::after {
+    content: "X";  
+    background-color: $secondary;
+    color: #FFF;
+  } 
+}
+
+.react-datepicker__day--selected {
+  background-color: $secondary;
+  transition: all $hover-transition;
+  &:hover {
+    background-color: $primary;
+  }
+}

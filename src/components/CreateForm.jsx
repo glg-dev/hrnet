@@ -1,13 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { departmentsList } from '../datas/departmentsList';
 import { statesList } from '../datas/statesList';
+import { addInList } from '../feature/employeeSlice';
 import Calendar from './DatePicker';
 import DropdownMenu from './DropdownMenu';
 
 const CreateForm = () => {
 
   const date = new Date();
+  const dispatch = useDispatch()
 
   const [firstname, setFirstname] = useState('')
   const [lastname, setLastname] = useState('')
@@ -19,10 +22,22 @@ const CreateForm = () => {
   const [zipCode, setZipCode] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState(departmentsList[0].value)
 
+  const newEmployee = {
+    firstname,
+    lastname : lastname.toUpperCase(),
+    birthDate,
+    startDate,
+    street,
+    city,
+    selectedState,
+    zipCode,
+    selectedDepartment
+  }
+
   function submitForm(e) {
     e.preventDefault()
-    console.log(firstname, lastname, birthDate, startDate, street, city, selectedState, zipCode, selectedDepartment);
-  }
+    dispatch(addInList(newEmployee))
+  }  
 
 
   return (
@@ -34,6 +49,7 @@ const CreateForm = () => {
           name="firstname" 
           id="firstname"
           onChange={(e)=> setFirstname(e.target.value)}
+          required
         />
       </section>
 
@@ -44,6 +60,7 @@ const CreateForm = () => {
           name="lastname" 
           id="lastname" 
           onChange={(e) => setLastname(e.target.value)}
+          required
         />
       </section>
 
@@ -66,6 +83,7 @@ const CreateForm = () => {
             name='street' 
             id='street'
             onChange={(e) => setStreet(e.target.value)} 
+            required
           />
         </section>
         <section className="city">
@@ -75,6 +93,7 @@ const CreateForm = () => {
             name='city' 
             id='city' 
             onChange={(e) => setCity(e.target.value)}
+            required
           />
         </section>
         <section className="state">
@@ -92,6 +111,7 @@ const CreateForm = () => {
             name="zip-code" 
             id="zip-code" 
             onChange={(e) => setZipCode(e.target.value)}
+            required
           />
         </section>
       </fieldset>

@@ -31,3 +31,11 @@ header {
   font-weight: 600;
   color: #FFF;
 }
+
+table {
+  text-align: center;
+  th {
+    font-weight: 600;
+    color: $primary;
+  }
+}

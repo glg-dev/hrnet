@@ -1,7 +1,10 @@
 import React from 'react';
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table'
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeEmployee } from '../feature/employeeSlice';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const defaultData = [
@@ -81,8 +84,8 @@ const columns = [
 
 const Table = () => {
 
-  const employees = useSelector(state => state.employee.employeesList)
-  // console.log(employees);
+  const employees = useSelector(state => state?.employee.employeesList)
+  const dispatch = useDispatch()
   
   const [data, setData] = useState([...employees])
 
@@ -92,37 +95,61 @@ const Table = () => {
     getCoreRowModel: getCoreRowModel(),
   })
 
-  return (
-    <table>
-      <thead>
-        {table.getHeaderGroups().map(headerGroup => (
-          <tr key={headerGroup.id}>
-            {headerGroup.headers.map(header => (
-              <th key={header.id}>
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody>
-        {table.getRowModel().rows.map(row => (
-          <tr key={row.id}>
-            {row.getVisibleCells().map(cell => (
-              <td key={cell.id}>
-                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
+  function handleDelete(id) {
+    console.log(employees[id]);
+    dispatch(removeEmployee(employees[id]))
+  }
+  
+  useEffect(() => {
+    setData([...employees])
+  }, [employees])
+
+  console.log(employees);
+
+  return !employees.length ? (
+        <div className='no-employees'>
+          There is no employee to display…
+          <Link to='/'>Back home</Link>
+        </div>
+      ) : (
+        <div className="table__container">
+          <table>
+            <thead>
+              {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map(header => (
+                    <th key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.map(row => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => (
+                    <td key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                  <td onClick={() => handleDelete(row.id)}>
+                    <span className='delete-button'>x</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    
+      
+    
 }
 
 export default Table

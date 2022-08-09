@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { departmentsList } from '../datas/departmentsList';
 import { statesList } from '../datas/statesList';
 import { addInList } from '../feature/employeeSlice';
@@ -22,7 +22,14 @@ const CreateForm = () => {
   const [zipCode, setZipCode] = useState('')
   const [selectedDepartment, setSelectedDepartment] = useState(departmentsList[0].value)
 
+  let id = 1
+  const employees = useSelector(state => state?.employee.employeesList)
+  if (employees.length) {
+    id = Math.max(...employees.map(employee => employee.id))+1
+  }
+  
   const newEmployee = {
+    id,
     firstname,
     lastname : lastname.toUpperCase(),
     birthDate,

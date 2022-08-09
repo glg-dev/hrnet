@@ -1,8 +1,35 @@
+.table__container {
+  min-width: 800px;
+  width: 100%;
+  overflow-x: auto;
+  padding-right: 4rem;
+}
 table {
   margin-top: 1rem;
   border-collapse: collapse;
   th, td {
     border: 1px solid $primary;
     padding: 0 1rem;
+    height: 40px;
+  }
+  .delete-button {
+    border: 1px solid $primary;
+    border-radius: 50%;
+    padding: 0.1rem .5rem .2rem .5rem;
+    cursor: pointer;
+    transition: all $hover-transition;
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}
+.no-employees {
+  display: flex;
+  gap: 2rem;
+  a {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

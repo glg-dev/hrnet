@@ -12,6 +12,12 @@ a {
     color: $secondary;
   }
 }
+.error-page a {
+  text-decoration: underline;
+  &:hover {
+    color: $secondary;
+  }
+}
 
 label {
   font-weight: 600;
@@ -34,8 +40,14 @@ header {
 
 table {
   text-align: center;
-  th {
+  th, .delete-button {
     font-weight: 600;
     color: $primary;
   }
+  .delete-button {
+    &:hover {
+      color: #FFF;
+    }
+  }
+
 }

@@ -19,6 +19,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 0 6%;
 }
 
 main {
@@ -26,4 +27,7 @@ main {
   border: 2px solid $secondary;
   border-radius: 1rem;
   padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
 }

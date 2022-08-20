@@ -96,7 +96,6 @@ const Table = () => {
   })
 
   function handleDelete(id) {
-    console.log(employees[id]);
     dispatch(removeEmployee(employees[id]))
   }
   
@@ -104,7 +103,6 @@ const Table = () => {
     setData([...employees])
   }, [employees])
 
-  console.log(employees);
 
   return !employees.length ? (
         <div className='no-employees'>

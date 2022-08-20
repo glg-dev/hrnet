@@ -11,7 +11,6 @@ const Calendar = ({ setInputDate }) => {
   function handleChange(e) {
     setDisplayedDate(e)
     setInputDate(e?.toLocaleDateString("fr-FR"))
-    console.log(e);
   }
 
   return (

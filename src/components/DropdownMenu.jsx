@@ -39,12 +39,15 @@ const DropdownMenu = ({ options, selected, setInput }) => {
     setInput(e.value)
   }
 
+  // console.log(selected);
+
   return (
     <Select 
       options={options}
-      defaultValue={selected}
+      value={selected.value}
       styles={customStyles}
       onChange={(e) => handleChange(e)}
+      
     />
   );
 };

@@ -49,5 +49,12 @@ table {
       color: #FFF;
     }
   }
+}
 
+.no-employees a {
+  font-weight: 600;
+  color: $primary;
+  &:hover {
+    text-decoration: underline;
+  }
 }

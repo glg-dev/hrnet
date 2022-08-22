@@ -22,6 +22,7 @@ const Calendar = ({ setInputDate }) => {
       showWeekNumbers
       isClearable
       clearButtonClassName="clear-button"
+      required
     />
   );
 };

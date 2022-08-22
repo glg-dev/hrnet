@@ -62,6 +62,10 @@ const CreateForm = () => {
     setIsSubmitted(true)
   }  
 
+  function hide() {
+    setIsSubmitted(false)
+  }
+
 
   return (
     <>
@@ -158,7 +162,7 @@ const CreateForm = () => {
       </form>
       {
         isSubmitted && (
-          <Modal />
+          <Modal title='Congratulations !' content='Employee have been created.' showModal hideModal={hide}/>
         )
       }
     </>

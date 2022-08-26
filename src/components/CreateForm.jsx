@@ -6,7 +6,7 @@ import { statesList } from '../datas/statesList';
 import { addInList } from '../feature/employeeSlice';
 import Calendar from './DatePicker';
 import DropdownMenu from './DropdownMenu';
-import Modal from './Modal/Modal';
+import { Modal } from '@glg-dev/react-modal/dist/Modal';
 
 const CreateForm = () => {
 
@@ -38,9 +38,9 @@ const CreateForm = () => {
     startDate,
     street,
     city,
-    selectedState,
+    selectedState: selectedState.value,
     zipCode,
-    selectedDepartment
+    selectedDepartment: selectedDepartment.value
   }
 
   function resetInputs() {
@@ -61,11 +61,6 @@ const CreateForm = () => {
     resetInputs()
     setIsSubmitted(true)
   }  
-
-  function hide() {
-    setIsSubmitted(false)
-  }
-
 
   return (
     <>
@@ -160,11 +155,12 @@ const CreateForm = () => {
 
         <button type="submit" className='save-button'>Save</button>
       </form>
-      {
-        isSubmitted && (
-          <Modal title='Congratulations !' content='Employee have been created.' showModal hideModal={hide}/>
-        )
-      }
+      <Modal 
+        title='Congratulations !' 
+        content='Employee have been created.' 
+        visible={isSubmitted}
+        hideModal={() => setIsSubmitted(false)}
+      />
     </>
   );
 };

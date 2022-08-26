@@ -36,10 +36,9 @@ const DropdownMenu = ({ options, selected, setInput }) => {
   }
   
   function handleChange(e) {
-    setInput(e.value)
+    setInput(e)
+    console.log(e);
   }
-
-  // console.log(selected);
 
   return (
     <Select 
@@ -48,7 +47,6 @@ const DropdownMenu = ({ options, selected, setInput }) => {
       styles={customStyles}
       onChange={(e) => handleChange(e)}
       placeholder={selected.label}
-      required
     />
   );
 };

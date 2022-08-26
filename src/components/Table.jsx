@@ -7,42 +7,6 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-const defaultData = [
-  {
-    firstName: 'Jim',
-    lastName: 'Halpert',
-    birthDate: '24/01/1970',
-    startDate: '02/07/2018',
-    street: '1 avenue du 1er janvier',
-    city: 'Scranton',
-    state: 'Pennsylvania',
-    zipCode: '00001',
-    department: 'Sales',
-  },
-  {
-    firstName: 'Jimmy',
-    lastName: 'McGill',
-    birthDate: '16/08/1984',
-    startDate: '04/02/2022',
-    street: '2 rue du 2 février',
-    city: 'Albuquerque',
-    state: 'New Mexico',
-    zipCode: '00002',
-    department: 'Marketing',
-  },
-  {
-    firstName: 'Ada',
-    lastName: 'Thorne',
-    birthDate: '15/12/1988',
-    startDate: '20/08/2020',
-    street: '3 boulevard du 3 mars',
-    city: 'Birmingham',
-    state: 'Washington',
-    zipCode: '00003',
-    department: 'Engineering',
-  },
-]
-
 const columns = [
   {
     accessorKey: 'firstname',

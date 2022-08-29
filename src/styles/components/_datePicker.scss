@@ -14,7 +14,8 @@
   } 
 }
 
-.react-datepicker__day--selected {
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
   background-color: $secondary;
   transition: all $hover-transition;
   &:hover {

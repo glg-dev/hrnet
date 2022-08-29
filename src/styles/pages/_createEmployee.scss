@@ -31,15 +31,6 @@
   label {
     padding-left: 0;
   }
-  input {
-    border-radius: 4px;
-    border: 1px solid $primary;
-    color: inherit;
-    &:focus-visible {
-      border: 2px solid $secondary;
-      outline: none;
-    }
-  }
   .state > div, .department > div {
     width: 100%;
   }

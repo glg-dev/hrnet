@@ -44,10 +44,18 @@ table {
     font-weight: 600;
     color: $primary;
   }
-  .delete-button {
-    &:hover {
-      color: #FFF;
-    }
+}
+.pagination {
+  font-size: .75rem;
+  input, select {
+    font-size: .75rem;
+  }
+}
+.delete-button,
+.pagination button {
+  color: #000;
+  &:hover {
+    color: #FFF;
   }
 }
 

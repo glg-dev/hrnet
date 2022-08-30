@@ -37,7 +37,6 @@ const DropdownMenu = ({ options, selected, setInput }) => {
   
   function handleChange(e) {
     setInput(e)
-    console.log(e);
   }
 
   return (

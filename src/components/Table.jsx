@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColumnDef, PaginationState, getPaginationRowModel, flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table'
+import { getPaginationRowModel, flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeEmployee } from '../feature/employeeSlice';
@@ -51,6 +51,7 @@ const Table = () => {
   const employees = useSelector(state => state?.employee.employeesList)
   const dispatch = useDispatch()
   
+  const [filter, setFilter] = useState('')
   const [data, setData] = useState([...employees])
 
   const table = useReactTable({
@@ -63,18 +64,44 @@ const Table = () => {
   function handleDelete(id) {
     dispatch(removeEmployee(employees[id]))
   }
-  
+
   useEffect(() => {
-    setData([...employees])
-  }, [employees])
+
+    if (filter) {
+      const newData = employees.filter((employee) => {
+        return Object
+          .values(employee)
+          .filter(value => typeof value === "string")
+          .toString()
+          .toLowerCase()
+          .includes(filter)
+      })
+      setData([...newData])
+    } else {
+      setData([...employees])
+    }
+  }, [filter, employees])
 
 
-  return !employees.length ? (
-        <div className='no-employees'>
-          There is no employee to display…
-          <Link to='/'>Back home</Link>
-        </div>
-      ) : (
+  return (
+    <>
+      <div className='filter'>
+        <input 
+          type="text" 
+          name="filter" 
+          id="filter"
+          placeholder='Search...'
+          onChange={(e) => setFilter(e.target.value.toLowerCase())} 
+        />
+      </div>
+
+    {!data.length ? (
+      <div className='no-employees'>
+        There is no employee to display…
+        <Link to='/'>Back home</Link>
+      </div>
+    ) : (
+      <>
         <div className="table__container">
           <table>
             <thead>
@@ -169,10 +196,12 @@ const Table = () => {
             </select>
           </div>
         </div>
-      )
+      </>
+    )}
     
-      
-    
+    </>
+
+  )
 }
 
 export default Table

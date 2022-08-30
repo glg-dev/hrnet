@@ -1,8 +1,16 @@
 :root {
-  --modal-font-family: sans-serif;
+  --modal-font-family: 'Montserrat', sans-serif;
+  --modal-text-color: #000;
+  --modal-text-decoration: none;
+  --modal-z-index: 100;
   --modal-wrapper-bg: rgba(0, 0, 0, 0.7);
   --modal-container-bg: #FFF;
   --modal-container-border-radius: 1rem;
-  --modal-close-button-color: black;
+  --modal-container-shadow: rgba(0, 0, 0, 0.1) 0px 0px 15px, rgba(0, 0, 0, 0.3) 0px 0px 15px;
+  --modal-container-padding: 2rem;
+  --modal-elements-gap: 1rem;
+  --modal-close-button-color: #5A6F07;
+  --modal-close-button-border-radius: 50%;
+  --modal-title-font-size: 1.5rem;
   --modal-content-font-size: 1rem;
 }

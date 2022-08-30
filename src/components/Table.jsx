@@ -66,7 +66,6 @@ const Table = () => {
   }
 
   useEffect(() => {
-
     if (filter) {
       const newData = employees.filter((employee) => {
         return Object
@@ -81,7 +80,6 @@ const Table = () => {
       setData([...employees])
     }
   }, [filter, employees])
-
 
   return (
     <>

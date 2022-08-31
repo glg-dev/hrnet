@@ -1,3 +1,7 @@
+.to-employees {
+  text-align: center;
+}
+
 .create-employee {
   max-width: 800px;
   .header {
@@ -24,11 +28,11 @@
     align-items: center;
   }
   label, input {
-    padding: 0.5rem;
     margin-left: 0;
     width: 100%;
   }
   label {
+    padding: 0.5rem;
     padding-left: 0;
   }
   .state > div, .department > div {
